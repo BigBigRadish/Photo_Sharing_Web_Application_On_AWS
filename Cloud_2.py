@@ -23,7 +23,7 @@ host="0.0.0.0"
 port=8888
 dbname="hire2020-hire-luozhukun1031"
 
-dynamodb = boto3.resource('dynamodb',region_name='cn-north-1',aws_access_key_id='AKIAVLSEBUAJRL52NPMZ', aws_secret_access_key='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')
+dynamodb = boto3.resource('dynamodb',region_name='cn-north-1',aws_access_key_id='*******', aws_secret_access_key='*****')
 
 table = dynamodb.Table('hire2020-hire-luozhukun1031')
 
@@ -33,8 +33,8 @@ app = Flask(__name__)
 
 app.secret_key = os.urandom(24)
 
-ACCESS_KEY_ID = 'AKIAVLSEBUAJRL52NPMZ'
-ACCESS_SECRET_KEY = '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'
+ACCESS_KEY_ID = '************'
+ACCESS_SECRET_KEY = '************'
 BUCKET_NAME = 'hire2020'
 
 ##########################
