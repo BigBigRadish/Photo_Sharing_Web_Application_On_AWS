@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Gallary</title>
+</head>
+<body>
+
+<br>
+<h1> {{ session['username']  }}</h1>
+<script type="text/javascript">
+    function add(argform1)
+    {
+        // document.getElementById(key).value = value;
+        document.getElementById(argform1).submit();
+        //document.argform.submit();
+        //document.getElementById("argsubmit").click();
+    }
+</script>
+<form action="../picture_search" method="post">
+    <div class="search">
+        <input type="text" name="search_name" value="输入照片名字" />
+       </label><input name="search_date" type="date" value="0000-00-00"/>
+        <input type="submit" class="submit" value="搜索">
+    </div>
+</form>
+{% for i in Item %}
+<center><a href = "javascript:;" onclick ="add('argform{{i.photoname}}');"><img src={{ i.photourl }} height="500px" width="500px"/></a></center>
+<form action="../pic_details" method="post" name="argform" id="argform{{i.photoname}}" enctype="multipart/form-data">
+    <input type="hidden" name="uploaddatetime"  value="{{i.datestr+' '+i.timestr}}"/>
+    <input type="hidden" name="photourl"  value="{{ i.photourl }}"/>
+    <input type="hidden" name="usercomment"  value="{{ i.comments['usercomment'] }}"/>
+    <input type="hidden" name="userip"  value="{{ i.userip }}"/>
+    <input type="hidden" name="userID"  value="{{ i.userID }}"/>
+    <input type="hidden" name="ID"  value="{{ i.ID }}"/>
+    <input type="hidden" name="othercomment"  value="{{ i.comments['othercomment'] }}"/>
+    <input type="hidden" name="photoname"  value="{{ i.photoname }}"/>
+    <input type="submit" name="argsubmit" style="display:none"/>
+</form>
+{% endfor %}
+<a href="http://52.80.213.27:8888/login"><B>返回前页,重新选择</B></a>
+</body>
+</html>
